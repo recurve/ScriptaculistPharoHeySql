@@ -24,7 +24,7 @@ BaselineOfScriptaculistPharoHeySql >> baseline: spec [
 { #category : #baselines }
 BaselineOfScriptaculistPharoHeySql >> heysql: spec [
 	spec 
-		baseline: 'heysql'	
+		baseline: 'HeySql'	
 		with: [ spec repository: 'github://recurve/heysql' ].
 ]
 
