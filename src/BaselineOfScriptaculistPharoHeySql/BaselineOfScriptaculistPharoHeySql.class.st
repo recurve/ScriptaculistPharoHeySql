@@ -1,6 +1,6 @@
 Class {
 	#name : #BaselineOfScriptaculistPharoHeySql,
-	#superclass : #Object,
+	#superclass : #BaselineOf,
 	#category : #BaselineOfScriptaculistPharoHeySql
 }
 
