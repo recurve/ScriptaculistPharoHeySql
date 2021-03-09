@@ -23,7 +23,6 @@ BaselineOfScriptaculistPharoHeySql >> baseline: spec [
 
 { #category : #baselines }
 BaselineOfScriptaculistPharoHeySql >> heysql: spec [
-	<baseline>
 	spec 
 		baseline: 'heysql'	
 		with: [ spec repository: 'github://recurve/heysql' ].
@@ -31,7 +30,6 @@ BaselineOfScriptaculistPharoHeySql >> heysql: spec [
 
 { #category : #baselines }
 BaselineOfScriptaculistPharoHeySql >> seaside: spec [
-	<baseline>
 	spec 
 		baseline: 'Seaside3'	
 		with: [ spec repository: 'github://SeasideSt/Seaside:master/repository' ].
