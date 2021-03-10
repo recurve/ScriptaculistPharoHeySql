@@ -54,5 +54,6 @@ with: [
 
 { #category : #actions }
 MyContactEditor >> save [ 
+self contact update. 
 self answer: true. 
 ]

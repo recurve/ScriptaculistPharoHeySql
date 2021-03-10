@@ -10,7 +10,8 @@ Class {
 { #category : #adding }
 MyAddressBookView >> addContact [
 | contactEditor contact |
-contact := MyContact new. 
+contact := MyContact newForAddressBook: self addressBook. 
+contact insert. 
 contactEditor := MyContactEditor on: contact. 
 (self call: contactEditor) ifTrue: [ self addressBook addContact: contact ]. 
 "this is all pretty straightforward except to point out that we will only add our new contact if the editor replies true (as a result of clicking save)"
@@ -19,7 +20,20 @@ contactEditor := MyContactEditor on: contact.
 
 { #category : #accessing }
 MyAddressBookView >> addressBook [
-	^ addressBook ifNil: [ addressBook := MyAddressBook new ]. 
+	| addressBooks |
+	addressBook ifNil: [ 
+			addressBooks := MyAddressBook fetchAll. 
+			addressBooks ifNotNil: [ 
+				(addressBooks isKindOf: MyAddressBook) 
+					ifTrue: [ addressBook := addressBooks ] 
+					ifFalse: [ addressBook := addressBooks at: 1 ]
+			]
+	]. 
+	addressBook ifNil: [  
+			addressBook := MyAddressBook new.
+			addressBook insert. 
+	].
+	^addressBook. 
 ]
 
 { #category : #rendering }
