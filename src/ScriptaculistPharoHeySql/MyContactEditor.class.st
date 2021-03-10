@@ -65,18 +65,10 @@ font-family: "Trebuchet MS"}
 div{
 padding: 2px;
 }
-.row1 {
-background-color: #99d ;
-color: #fff;
-}
-.row0 {
-background-color: #67d ;
-color: #fff;
-}
-.row {
-background-color: #67d ;
-color: #fff;
-}
+
+.row:nth-child(even) {background-color: #67d ; color: #fff;}
+.row:nth-child(odd) {background-color: #99d ; color: #fff;}
+
 a{
 color: #ccf;
 font-weight: bold;
