@@ -19,7 +19,7 @@ MyContact class >> createFetchMethods [
 dict := Dictionary
 		newFrom:
 			{
-				('forAddressBookId' -> 'select * from mycontact where addressbookid = $1') . 
+				('forAddressBookId' -> 'select * from mycontact where addressbookid = $1 order by surname asc, firstName asc') . 
 				('forId' -> 'select * from mycontact where id = $1')
 			}.
 	self generateSqlMethods: dict.
@@ -115,6 +115,20 @@ MyContact >> freshFromDB [
 id ifNil: [ freshContact := self class new ] 
 	ifNotNil: [ freshContact := self class forId: id ].
 ^freshContact. 
+]
+
+{ #category : #accessing }
+MyContact >> fullName [ 
+| fullName |
+firstName ifNil: [ fullName := surname ] ifNotNil: [ fullName := firstName, ' ', surname ].
+fullName ifNil: [ fullName := 'Empty' ].
+(fullName trim isEmpty) ifTrue: [ fullName := 'Empty' ].
+^fullName. 
+]
+
+{ #category : #accessing }
+MyContact >> identifier [ 
+^self fullName asLowercase onlyLetters , id asString. 
 ]
 
 { #category : #utility }

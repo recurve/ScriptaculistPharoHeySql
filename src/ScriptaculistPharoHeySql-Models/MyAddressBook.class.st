@@ -37,12 +37,14 @@ MyAddressBook >> contacts [
 	contacts ifNil: [ 
 			id ifNotNil: [ 
 				fetchedContacts := MyContact forAddressBook: self. 
-				(fetchedContacts isKindOf: MyContact)
-					ifTrue: [ 
-						contacts := OrderedCollection new. 
-						contacts add: fetchedContacts 
-					] 
-					ifFalse: [ contacts := fetchedContacts ]
+				fetchedContacts ifNotNil: [  
+					(fetchedContacts isKindOf: MyContact)
+						ifTrue: [ 
+							contacts := OrderedCollection new. 
+							contacts add: fetchedContacts 
+						] 
+						ifFalse: [ contacts := fetchedContacts asOrderedCollection ]
+				]
 			]. 
 			contacts ifNil: [ contacts := OrderedCollection new ] 
 	]. 

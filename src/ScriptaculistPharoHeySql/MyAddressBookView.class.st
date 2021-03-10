@@ -43,7 +43,8 @@ MyAddressBookView >> renderContentOn: html [
 		html div class: ('row'); 
 		with: [ 
 			html anchor callback: [ self showContact: contact ]; 
-			with: (contact firstName , ' ' , contact surname)
+			with: (contact fullName). 
+			html render: (MyContactDetailsView on: contact).
 		]
 	]. 
 	html form: [ 
