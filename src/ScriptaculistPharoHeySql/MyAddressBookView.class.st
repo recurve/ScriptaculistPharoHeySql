@@ -55,6 +55,41 @@ MyAddressBookView >> renderContentOn: html [
 
 { #category : #'as yet unclassified' }
 MyAddressBookView >> showContact: aContact [
-self call: (MyContactEditor on: aContact). 
+| contactEditor memento |
+memento := aContact copy.
+contactEditor := MyContactEditor on: aContact.
+(self call: contactEditor) ifFalse: [aContact resetFromMemento: memento]
 "managing save and cancel for new contacts is easy. For editing it is a little more involved, we will implement a memento for the contact"
+]
+
+{ #category : #rendering }
+MyAddressBookView >> style [ 
+^'body { background-color: #fff;
+font-family: "Trebuchet MS"}
+div{
+padding: 2px;
+}
+.row1 {
+background-color: #99d ;
+color: #fff;
+}
+.row0 {
+background-color: #67d ;
+color: #fff;
+}
+.row {
+background-color: #67d ;
+color: #fff;
+}
+a{
+color: #ccf;
+font-weight: bold;
+text-decoration: none;
+}
+h1{
+color: orange;
+}
+.field{
+margin-left:30px
+}'. 
 ]
