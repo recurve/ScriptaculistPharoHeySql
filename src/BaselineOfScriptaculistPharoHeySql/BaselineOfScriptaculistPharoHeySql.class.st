@@ -41,4 +41,10 @@ BaselineOfScriptaculistPharoHeySql >> seaside: spec [
 
 "Found definitive info on loading scriptaculous, which also loads prototype, at the following link:"
 "https://github.com/SeasideSt/Seaside/blob/master/repository/BaselineOfSeaside3.package/BaselineOfSeaside3.class/instance/baselinescriptaculous..st"
+
+"Seaside-Welcome - automatically sets up the Zinc web server and listens on port 8080"
+
+"Zinc - is a light webserver in smalltalk"
+
+"Development - has all the Halos and things in Seaside for inspecting HTML"
 ]

@@ -1,6 +1,6 @@
 Class {
 	#name : #MyContactEditor,
-	#superclass : #WAComponent,
+	#superclass : #MyBaseComponent,
 	#instVars : [
 		'contact'
 	],
@@ -64,28 +64,4 @@ with: [
 MyContactEditor >> save [ 
 self contact update. 
 self answer: true. 
-]
-
-{ #category : #rendering }
-MyContactEditor >> style [ 
-^'body { background-color: #fff;
-font-family: "Trebuchet MS"}
-div{
-padding: 2px;
-}
-
-.row:nth-child(even) {background-color: #67d ; color: #fff;}
-.row:nth-child(odd) {background-color: #99d ; color: #fff;}
-
-a{
-color: #ccf;
-font-weight: bold;
-text-decoration: none;
-}
-h1{
-color: orange;
-}
-.field{
-margin-left:30px
-}'. 
 ]

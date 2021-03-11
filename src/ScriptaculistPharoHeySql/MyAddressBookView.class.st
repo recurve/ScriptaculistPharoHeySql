@@ -1,6 +1,6 @@
 Class {
 	#name : #MyAddressBookView,
-	#superclass : #WAComponent,
+	#superclass : #MyBaseComponent,
 	#instVars : [
 		'addressBook'
 	],
@@ -61,28 +61,4 @@ memento := aContact copy.
 contactEditor := MyContactEditor on: aContact.
 (self call: contactEditor) ifFalse: [aContact resetFromMemento: memento]
 "managing save and cancel for new contacts is easy. For editing it is a little more involved, we will implement a memento for the contact"
-]
-
-{ #category : #rendering }
-MyAddressBookView >> style [ 
-^'body { background-color: #fff;
-font-family: "Trebuchet MS"}
-div{
-padding: 2px;
-}
-
-.row:nth-child(even) {background-color: #67d ; color: #fff;}
-.row:nth-child(odd) {background-color: #99d ; color: #fff;}
-
-a{
-color: #ccf;
-font-weight: bold;
-text-decoration: none;
-}
-h1{
-color: orange;
-}
-.field{
-margin-left:30px
-}'. 
 ]

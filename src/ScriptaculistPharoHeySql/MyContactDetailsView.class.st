@@ -1,6 +1,6 @@
 Class {
 	#name : #MyContactDetailsView,
-	#superclass : #WAComponent,
+	#superclass : #MyBaseComponent,
 	#instVars : [
 		'contact'
 	],
