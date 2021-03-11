@@ -22,8 +22,12 @@ MyAddressBookSetup class >> init [
 
 { #category : #initialization }
 MyAddressBookSetup class >> init: newDbConnectUrl [
+	| app |
 	newDbConnectUrl ifNil: [Exception signal: 'Must provide a Postgress Db Connect url'].
-	WAAdmin register: MyAddressBookView asApplicationAt: 'AddressBook'.
+	app := WAAdmin register: MyAddressBookView asApplicationAt: 'AddressBook'.
+	app addLibrary: PTDevelopmentLibrary.
+	app addLibrary: SUComponentLibrary.
+	app addLibrary: SUDevelopmentLibrary.
 	dbConnectUrl := newDbConnectUrl.
 	HeySql init: dbConnectUrl.
 	self setupDatabaseFields. 
