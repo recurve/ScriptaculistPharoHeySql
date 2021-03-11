@@ -82,7 +82,7 @@ html div id: aString;
 style: 'display: none';
 with: [ html render: 'Name: ', contact fullName.
 html break.
-html render: 'Birthday: ', contact dateOfBirth printString.
+html render: 'Birthday: ', contact dateOfBirth asDate printString.
 html break.
 html render: 'Telephone: ', contact telephoneNumber.
 html break.
