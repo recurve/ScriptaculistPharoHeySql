@@ -34,4 +34,6 @@ BaselineOfScriptaculistPharoHeySql >> seaside: spec [
 		baseline: 'Seaside3'	
 		with: [ spec repository: 'github://SeasideSt/Seaside:master/repository'; loads: #('Scriptaculous-Core') ].
 
+"Found definitive info on loading scriptaculous, which also loads prototype, at the following link:"
+"https://github.com/SeasideSt/Seaside/blob/master/repository/BaselineOfSeaside3.package/BaselineOfSeaside3.class/instance/baselinescriptaculous..st"
 ]
