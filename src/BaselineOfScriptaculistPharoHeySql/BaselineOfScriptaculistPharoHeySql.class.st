@@ -16,7 +16,7 @@ BaselineOfScriptaculistPharoHeySql >> baseline: spec [
 
 			"Packages"
 			spec
-				package: 'ScriptaculistPharoHeySql' with: [ spec requires: #('Seaside3' 'HeySql') ];
+				package: 'ScriptaculistPharoHeySql' with: [ spec requires: #('Scriptaculous-Components' 'HeySql') ];
 				package: 'ScriptaculistPharoHeySql-Models' with: [ spec requires: #('HeySql') ];
 				package: 'ScriptaculistPharoHeySql-Tests' with: [ spec requires: #('HeySql') ]
 		].
