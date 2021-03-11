@@ -24,15 +24,56 @@ MyContactDetailsView >> contact: anObject [
 
 { #category : #accessing }
 MyContactDetailsView >> renderContentOn: html [
-html anchor
-style: 'margin-left: 40px';
-onClick: (html scriptaculous effect id: (contact identifier); perform: #toggleBlind);
-with: 'Toggle Detail'.
+	self renderContentOnAdvanced: html. 
+	"self renderContentOnSimple: html. "
+	
+"There are two ways. Advanced has extra toggle of show hide. Simple doesn't change the label"
+]
 
-"What we’ve done here is added a new hyperlink “Toggle Detail” which when clicked will call a Scriptaculous #toggleBlind effect on the div who’s id attribute is the contacts identifier."
-"http://book.seaside.st/book/web-20/scriptaculous/add-effect"
+{ #category : #accessing }
+MyContactDetailsView >> renderContentOnAdvanced: html [
+	html anchor
+		id: contact identifier , 'show';
+		style: 'margin-left:40px';
+		onClick:
+			(html scriptaculous effect
+				id: contact identifier;
+				toggleBlind;
+				onBeforeStart: (html scriptaculous element id: (contact identifier , 'show'); toggle);
+				onAfterFinish: (html scriptaculous element id: (contact identifier , 'hide'); toggle));
+		with: 'Show Detail'.
+	html anchor
+		id: contact identifier , 'hide';
+		style: 'margin-left:40px;display:none';
+		onClick:
+			(html scriptaculous effect
+				id: contact identifier;
+				toggleBlind;
+				onBeforeStart: (html scriptaculous element id: (contact identifier , 'hide'); toggle);
+				onAfterFinish: (html scriptaculous element id: (contact identifier , 'show'); toggle));
+		with: 'Hide Detail'.
+	self renderDetailsDiv: contact identifier on: html
 
-self renderDetailsDiv: contact identifier on: html
+	"What we’ve done here is added a new hyperlink “Toggle Detail” which when clicked will call a Scriptaculous #toggleBlind effect on the div who’s id attribute is the contacts identifier."
+	"http://book.seaside.st/book/web-20/scriptaculous/add-effect"
+
+]
+
+{ #category : #accessing }
+MyContactDetailsView >> renderContentOnSimple: html [
+	html anchor
+		style: 'margin-left: 40px';
+		onClick:
+			(html scriptaculous effect
+				id: contact identifier;
+				toggleBlind);
+		with: 'Toggle Detail'.
+		
+	self renderDetailsDiv: contact identifier on: html. 
+	
+	"What we’ve done here is added a new hyperlink “Toggle Detail” which when clicked will call a Scriptaculous #toggleBlind effect on the div who’s id attribute is the contacts identifier."
+	"http://book.seaside.st/book/web-20/scriptaculous/add-effect"
+
 ]
 
 { #category : #accessing }
