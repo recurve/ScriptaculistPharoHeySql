@@ -1,6 +1,8 @@
 # ScriptaculistPharoHeySql
 Contact List web application that you can use in your web browser. It is served by Smalltalk (Pharo) using the Seaside web framework and persisted to Postgres with ORM HeySql. Uses Scriptaculous for eye candy. 
 
+[![Scriptaculist Demo](http://i.imgur.com/wx4WGNb.png)](https://youtu.be/b-BLKmnktRs "Scriptaculist Demo")
+
 ### SQL setup
 
 You will need to prep your Postgres SQL database with user, password, and db. Here's an example:
