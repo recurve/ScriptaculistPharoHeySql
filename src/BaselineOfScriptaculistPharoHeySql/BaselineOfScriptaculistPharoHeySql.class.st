@@ -35,7 +35,7 @@ BaselineOfScriptaculistPharoHeySql >> seaside: spec [
 		baseline: 'Seaside3'	
 		with: [ 
 			spec 
-			loads: #('Scriptaculous-Components' 'Development' 'Zinc'); 
+			loads: #('Scriptaculous-Components' 'Development' 'Zinc' 'Seaside-Welcome'); 
 			repository: 'github://SeasideSt/Seaside:master/repository'
 		].
 
