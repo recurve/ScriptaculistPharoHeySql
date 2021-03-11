@@ -23,6 +23,14 @@ MyContactDetailsView >> contact: anObject [
 ]
 
 { #category : #accessing }
+MyContactDetailsView >> produceThumbnailIfAvailableOn: html [
+^ contact photo notNil & contact photoMimeType notNil
+ifTrue: [html image document: contact photo mimeType: contact photoMimeType;
+style: 'float: left; margin-right: 1em; height: 5em; ';
+altText: 'Picture of ' , contact fullName]
+]
+
+{ #category : #accessing }
 MyContactDetailsView >> renderContentOn: html [
 	self renderContentOnAdvanced: html. 
 	"self renderContentOnSimple: html. "
@@ -80,13 +88,15 @@ MyContactDetailsView >> renderContentOnSimple: html [
 MyContactDetailsView >> renderDetailsDiv: aString on: html [
 html div id: aString;
 style: 'display: none';
-with: [ html render: 'Name: ', contact fullName.
-html break.
-html render: 'Birthday: ', contact dateOfBirth asDate printString.
-html break.
-html render: 'Telephone: ', contact telephoneNumber.
-html break.
-html render: 'Email: '. contact emailAddress.
-html break.
+with: [ 
+	html div style: 'clear: both;'; with: [ self produceThumbnailIfAvailableOn: html ]. 
+	html render: 'Name: ', contact fullName.
+	html break.
+	html render: 'Birthday: ', contact dateOfBirth asDate printString.
+	html break.
+	html render: 'Telephone: ', contact telephoneNumber.
+	html break.
+	html render: 'Email: '. contact emailAddress.
+	html break.
 ]
 ]

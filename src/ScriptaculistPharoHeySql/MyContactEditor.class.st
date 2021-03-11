@@ -13,6 +13,13 @@ MyContactEditor class >> on: aContact [
 ]
 
 { #category : #actions }
+MyContactEditor >> attachPhotograph: aFile [
+	aFile
+		ifNotNil: [ contact photo: aFile rawContents.
+			contact photoMimeType: aFile contentType ]
+]
+
+{ #category : #actions }
 MyContactEditor >> cancel [ 
 self answer: false. 
 ]
@@ -30,12 +37,13 @@ MyContactEditor >> contact: anObject [
 { #category : #rendering }
 MyContactEditor >> renderContentOn: html [
 html heading: 'Contact Details'.
-html form with: [
+html form multipart; with: [
 	self renderLabel: 'First Name: ' withInput: [html textInput on: #firstName of: contact] on: html.
 	self renderLabel: 'Surname: ' withInput: [html textInput on: #surname of: contact] on: html.
 	self renderLabel: 'Date of Birth: ' withInput: [html dateInput on: #dateOfBirth of: contact] on: html.
 	self renderLabel: 'Telephone: ' withInput: [html textInput on: #telephoneNumber of: contact] on: html.
 	self renderLabel: 'Email: ' withInput: [html textInput on: #emailAddress of: contact] on: html.
+	self renderLabel: 'Photograph: ' withInput: [html fileUpload callback: [:file | self attachPhotograph: file]] on: html.
 	html span class: 'button'; with: [html submitButton on: #save of: self].
 	html span class: 'button'; with: [html submitButton on: #cancel of: self].
 ]

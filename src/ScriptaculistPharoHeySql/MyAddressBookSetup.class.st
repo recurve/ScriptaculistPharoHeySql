@@ -41,12 +41,12 @@ MyAddressBookSetup class >> init: newDbConnectUrl [
 
 { #category : #initialization }
 MyAddressBookSetup class >> setupDatabaseFields [
-	MyAddressBook dbFields: 'displayName'.
-	MyContact dbFields: 'addressBookId firstName surname dateOfBirth telephoneNumber emailAddress'. 
+	MyAddressBook setupDatabaseFields.
+	MyContact setupDatabaseFields. 
 ]
 
 { #category : #initialization }
 MyAddressBookSetup class >> setupMethodGeneration [
-	MyContact createFetchMethods. 
-	MyAddressBook createFetchMethods. 
+	MyContact setupMethodGeneration. 
+	MyAddressBook setupMethodGeneration. 
 ]

@@ -8,22 +8,12 @@ Class {
 		'surname',
 		'dateOfBirth',
 		'telephoneNumber',
-		'emailAddress'
+		'emailAddress',
+		'photo',
+		'photoMimeType'
 	],
 	#category : #'ScriptaculistPharoHeySql-Models'
 }
-
-{ #category : #utility }
-MyContact class >> createFetchMethods [
-| dict |
-dict := Dictionary
-		newFrom:
-			{
-				('forAddressBookId' -> 'select * from mycontact where addressbookid = $1 order by surname asc, firstName asc') . 
-				('forId' -> 'select * from mycontact where id = $1')
-			}.
-	self generateSqlMethods: dict.
-]
 
 { #category : #accessor }
 MyContact class >> forAddressBook: addressBook [ 
@@ -56,6 +46,23 @@ MyContact class >> newForAddressBook: addressBook [
 	newAddressBook addressBook: addressBook.
 	^newAddressBook. 
 	    
+]
+
+{ #category : #utility }
+MyContact class >> setupDatabaseFields [ 
+self dbFields: 'addressBookId firstName surname dateOfBirth telephoneNumber emailAddress photo photoMimeType'. 
+]
+
+{ #category : #utility }
+MyContact class >> setupMethodGeneration [
+| dict |
+dict := Dictionary
+		newFrom:
+			{
+				('forAddressBookId' -> 'select * from mycontact where addressbookid = $1 order by surname asc, firstName asc') . 
+				('forId' -> 'select * from mycontact where id = $1')
+			}.
+	self generateSqlMethods: dict.
 ]
 
 { #category : #accessing }
@@ -129,6 +136,26 @@ fullName ifNil: [ fullName := 'Empty' ].
 { #category : #accessing }
 MyContact >> identifier [ 
 ^self fullName asLowercase onlyLetters , id asString. 
+]
+
+{ #category : #accessing }
+MyContact >> photo [
+	^ photo
+]
+
+{ #category : #accessing }
+MyContact >> photo: anObject [
+	photo := anObject
+]
+
+{ #category : #accessing }
+MyContact >> photoMimeType [
+	^ photoMimeType
+]
+
+{ #category : #accessing }
+MyContact >> photoMimeType: anObject [
+	photoMimeType := anObject
 ]
 
 { #category : #utility }
