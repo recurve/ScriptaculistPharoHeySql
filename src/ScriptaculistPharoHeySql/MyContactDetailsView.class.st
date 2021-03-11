@@ -24,9 +24,8 @@ MyContactDetailsView >> contact: anObject [
 
 { #category : #accessing }
 MyContactDetailsView >> produceThumbnailIfAvailableOn: html [
-^ contact photo notNil & contact photoMimeType notNil
+contact photo notNil & contact photoMimeType notNil
 ifTrue: [html image document: contact photo mimeType: contact photoMimeType;
-style: 'float: left; margin-right: 1em; height: 5em; ';
 altText: 'Picture of ' , contact fullName]
 ]
 
@@ -89,7 +88,7 @@ MyContactDetailsView >> renderDetailsDiv: aString on: html [
 html div id: aString;
 style: 'display: none';
 with: [ 
-	html div style: 'clear: both;'; with: [ self produceThumbnailIfAvailableOn: html ]. 
+	self produceThumbnailIfAvailableOn: html. 
 	html render: 'Name: ', contact fullName.
 	html break.
 	html render: 'Birthday: ', contact dateOfBirth asDate printString.

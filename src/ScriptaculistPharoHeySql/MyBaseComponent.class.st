@@ -15,6 +15,10 @@ padding: 2px;
 .row:nth-child(even) {background-color: #67d ; color: #fff;}
 .row:nth-child(odd) {background-color: #99d ; color: #fff;}
 
+.row img { float: left; margin-right: 1em; height: 5em; }
+
+.row .edit-contact-link { text-decoration: underline; }
+
 a{
 color: #ccf;
 font-weight: bold;

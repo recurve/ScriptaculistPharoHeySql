@@ -42,8 +42,9 @@ MyAddressBookView >> renderContentOn: html [
 	self addressBook contacts do: [ :contact |
 		html div class: ('row'); 
 		with: [ 
-			html anchor callback: [ self showContact: contact ]; 
-			with: (contact fullName). 
+			html anchor class: 'edit-contact-link'; 
+				callback: [ self showContact: contact ]; 
+				with: (contact fullName).
 			html render: (MyContactDetailsView on: contact).
 		]
 	]. 
