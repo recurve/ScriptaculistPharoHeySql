@@ -17,9 +17,9 @@ BaselineOfScriptaculistPharoHeySql >> baseline: spec [
 			"Packages"
 			spec
 				package: 'ScriptaculistPharoHeySql-Extensions'; 
-				package: 'ScriptaculistPharoHeySql' with: [ spec requires: #('Seaside3' 'HeySql') ];
-				package: 'ScriptaculistPharoHeySql-Models' with: [ spec requires: #('HeySql') ];
-				package: 'ScriptaculistPharoHeySql-Tests' with: [ spec requires: #('HeySql') ]
+				package: 'ScriptaculistPharoHeySql' with: [ spec requires: #('Seaside3' 'HeySql' 'ScriptaculistPharoHeySql-Extensions') ];
+				package: 'ScriptaculistPharoHeySql-Models' with: [ spec requires: #('HeySql' 'ScriptaculistPharoHeySql-Extensions') ];
+				package: 'ScriptaculistPharoHeySql-Tests' with: [ spec requires: #('HeySql' 'ScriptaculistPharoHeySql-Extensions') ]
 		].
 ]
 
@@ -29,7 +29,6 @@ BaselineOfScriptaculistPharoHeySql >> heysql: spec [
 		baseline: 'HeySql'	
 		with: [ 
 			spec 
-			loads: #('ScriptaculistPharoHeySql-Extensions'); 
 			repository: 'github://recurve/heysql' 
 		].
 ]
