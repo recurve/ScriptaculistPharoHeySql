@@ -11,7 +11,7 @@ Class {
 MyAddressBookView >> addContact [
 | contactEditor contact |
 contact := MyContact newForAddressBook: self addressBook. 
-contact insert. 
+contact save. 
 contactEditor := MyContactEditor on: contact. 
 (self call: contactEditor) ifTrue: [ self addressBook addContact: contact ]. 
 "this is all pretty straightforward except to point out that we will only add our new contact if the editor replies true (as a result of clicking save)"
@@ -31,7 +31,7 @@ MyAddressBookView >> addressBook [
 	]. 
 	addressBook ifNil: [  
 			addressBook := MyAddressBook new.
-			addressBook insert. 
+			addressBook save. 
 	].
 	^addressBook. 
 ]
