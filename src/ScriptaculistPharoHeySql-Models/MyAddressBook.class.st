@@ -38,20 +38,11 @@ MyAddressBook >> addContact: aContact [
 
 { #category : #accessing }
 MyAddressBook >> contacts [
-	| fetchedContacts |
 	contacts ifNil: [ 
-			id ifNotNil: [ 
-				fetchedContacts := MyContact forAddressBook: self. 
-				fetchedContacts ifNotNil: [  
-					(fetchedContacts isKindOf: MyContact)
-						ifTrue: [ 
-							contacts := OrderedCollection new. 
-							contacts add: fetchedContacts 
-						] 
-						ifFalse: [ contacts := fetchedContacts asOrderedCollection ]
-				]
+			self isPersisted ifTrue: [ 
+				contacts := MyContact forAddressBook: self. 
 			]. 
-			contacts ifNil: [ contacts := OrderedCollection new ] 
+			contacts := contacts asOrderedCollection. 
 	]. 
 	^contacts. 
 ]

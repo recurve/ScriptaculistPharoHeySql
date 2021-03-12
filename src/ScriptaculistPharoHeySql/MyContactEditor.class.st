@@ -62,6 +62,6 @@ with: [
 
 { #category : #actions }
 MyContactEditor >> save [ 
-self contact update. 
+self contact save. 
 self answer: true. 
 ]
