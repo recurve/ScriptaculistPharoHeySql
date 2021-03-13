@@ -18,6 +18,11 @@ MyBaseRecord >> isDeleted: anObject [
 	isDeleted := anObject
 ]
 
+{ #category : #accessing }
+MyBaseRecord >> isNotDeleted [
+	^ self isDeleted not. 
+]
+
 { #category : #'*ScriptaculistPharoHeySql' }
 MyBaseRecord >> save [
 	self isDeleted

@@ -108,8 +108,8 @@ MyContact >> dateOfBirth: anObject [
 
 { #category : #accessing }
 MyContact >> delete [
-	self isDeleted
-		ifFalse: [ self class deleteForId: self id.
+	self isNotDeleted & self isPersisted
+		ifTrue: [ self class deleteForId: self id.
 			self isDeleted: true ].
 	^ self
 ]
