@@ -21,7 +21,8 @@ MyContactEditor >> attachPhotograph: aFile [
 
 { #category : #actions }
 MyContactEditor >> cancel [ 
-self answer: false. 
+contact freshFromDB. 
+self answer: PageActionEnum cancel. 
 ]
 
 { #category : #accessing }
@@ -32,6 +33,12 @@ MyContactEditor >> contact [
 { #category : #accessing }
 MyContactEditor >> contact: anObject [
 	contact := anObject
+]
+
+{ #category : #actions }
+MyContactEditor >> delete [ 
+contact delete. 
+self answer: PageActionEnum delete. 
 ]
 
 { #category : #rendering }
@@ -46,6 +53,7 @@ html form multipart; with: [
 	self renderLabel: 'Photograph: ' withInput: [html fileUpload callback: [:file | self attachPhotograph: file]] on: html.
 	html span class: 'button'; with: [html submitButton on: #save of: self].
 	html span class: 'button'; with: [html submitButton on: #cancel of: self].
+	html span class: 'button'; with: [html submitButton on: #delete of: self].
 ]
 ]
 
@@ -63,5 +71,5 @@ with: [
 { #category : #actions }
 MyContactEditor >> save [ 
 self contact save. 
-self answer: true. 
+self answer: PageActionEnum save. 
 ]

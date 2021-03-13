@@ -11,9 +11,8 @@ Class {
 MyAddressBookView >> addContact [
 | contactEditor contact |
 contact := MyContact newForAddressBook: self addressBook. 
-contact save. 
 contactEditor := MyContactEditor on: contact. 
-(self call: contactEditor) ifTrue: [ self addressBook addContact: contact ]. 
+(self call: contactEditor) isSave ifTrue: [ self addressBook addContact: contact ]. 
 "this is all pretty straightforward except to point out that we will only add our new contact if the editor replies true (as a result of clicking save)"
 
 ]
@@ -57,9 +56,8 @@ MyAddressBookView >> renderContentOn: html [
 
 { #category : #'as yet unclassified' }
 MyAddressBookView >> showContact: aContact [
-| contactEditor memento |
-memento := aContact copy.
+| contactEditor |
 contactEditor := MyContactEditor on: aContact.
-(self call: contactEditor) ifFalse: [aContact resetFromMemento: memento]
+(self call: contactEditor) isDelete ifTrue: [ addressBook removeContact: aContact ]
 "managing save and cancel for new contacts is easy. For editing it is a little more involved, we will implement a memento for the contact"
 ]

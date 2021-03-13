@@ -1,6 +1,6 @@
 Class {
 	#name : #MyAddressBook,
-	#superclass : #HeySql,
+	#superclass : #MyBaseRecord,
 	#instVars : [
 		'contacts',
 		'displayName'
@@ -55,4 +55,9 @@ MyAddressBook >> displayName [
 { #category : #accessing }
 MyAddressBook >> displayName: anObject [
 	displayName := anObject
+]
+
+{ #category : #accessing }
+MyAddressBook >> removeContact: aContact [
+	self contacts remove: aContact. 
 ]

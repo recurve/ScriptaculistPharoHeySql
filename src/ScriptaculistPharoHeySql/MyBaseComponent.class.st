@@ -12,6 +12,8 @@ div{
 padding: 2px;
 }
 
+input[type = "submit"] { margin-right: 1em; }
+
 .row:nth-child(even) {background-color: #67d ; color: #fff;}
 .row:nth-child(odd) {background-color: #99d ; color: #fff;}
 

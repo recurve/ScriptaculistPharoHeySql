@@ -16,10 +16,3 @@ HeySql >> isPersisted [
 ^id isNotNil. 
 	  
 ]
-
-{ #category : #'*ScriptaculistPharoHeySql' }
-HeySql >> save [ 
-self isPersisted ifTrue: [ self update ] ifFalse: [ self insert ].
-^self. 
-	  
-]
