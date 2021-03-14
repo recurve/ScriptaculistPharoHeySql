@@ -23,7 +23,7 @@ MyAddressBookSetup class >> init [
 { #category : #initialization }
 MyAddressBookSetup class >> init: newDbConnectUrl [
 	| app |
-	newDbConnectUrl ifNil: [Exception signal: 'Must provide a Postgress Db Connect url'].
+	newDbConnectUrl ifNil: [self error: 'Must provide a Postgress Db Connect url'].
 	app := WAAdmin register: MyAddressBookView asApplicationAt: 'AddressBook'.
 	app addLibrary: PTDevelopmentLibrary.
 	app addLibrary: SUComponentLibrary.
@@ -41,12 +41,16 @@ MyAddressBookSetup class >> init: newDbConnectUrl [
 
 { #category : #initialization }
 MyAddressBookSetup class >> setupDatabaseFields [
-	MyAddressBook setupDatabaseFields.
-	MyContact setupDatabaseFields. 
+| classes |
+classes := (RPackageOrganizer default packageNamed: 'ScriptaculistPharoHeySql-Models') definedClasses. 
+classes do: [ :v | v setupDatabaseFields ].
+
 ]
 
 { #category : #initialization }
 MyAddressBookSetup class >> setupMethodGeneration [
-	MyContact setupMethodGeneration. 
-	MyAddressBook setupMethodGeneration. 
+| classes |
+classes := (RPackageOrganizer default packageNamed: 'ScriptaculistPharoHeySql-Models') definedClasses. 
+classes do: [ :v | v setupMethodGeneration ].
+
 ]

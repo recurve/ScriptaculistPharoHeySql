@@ -16,3 +16,13 @@ HeySql >> isPersisted [
 ^id isNotNil. 
 	  
 ]
+
+{ #category : #'*ScriptaculistPharoHeySql' }
+HeySql >> resetFromMemento: aMemento [
+| variableNames |
+variableNames := self class instVarNames. 
+variableNames do: [ :v | 
+	self perform: (v , ':') with: (aMemento perform: v)
+].
+
+]

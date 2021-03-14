@@ -83,7 +83,8 @@ MyContact >> addressBook [
 { #category : #accessing }
 MyContact >> addressBook: anObject [
 	addressBook := anObject.
-	addressBookId := anObject id. 
+	anObject ifNotNil: [ addressBookId := anObject id ].
+
 ]
 
 { #category : #accessing }
@@ -175,17 +176,6 @@ MyContact >> photoMimeType [
 { #category : #accessing }
 MyContact >> photoMimeType: anObject [
 	photoMimeType := anObject
-]
-
-{ #category : #utility }
-MyContact >> resetFromMemento: aMemento [
-dateOfBirth := aMemento dateOfBirth.
-emailAddress := aMemento emailAddress.
-firstName := aMemento firstName.
-surname := aMemento surname.
-telephoneNumber := aMemento telephoneNumber.
-photo := aMemento photo. 
-photoMimeType := aMemento photoMimeType. 
 ]
 
 { #category : #accessing }
